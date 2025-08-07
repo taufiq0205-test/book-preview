@@ -9,14 +9,14 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@react-three/drei": "^10.6.1",
-    "@react-three/fiber": "^9.3.0",
     "@supabase/supabase-js": "^2.53.0",
     "@tailwindcss/aspect-ratio": "^0.4.2",
+    "jspdf": "^3.0.1",
+    "lucide-react": "^0.536.0",
     "next": "15.4.5",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "three": "^0.179.1"
+    "upscaler": "^1.0.0-beta.19"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
