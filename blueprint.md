@@ -6,7 +6,7 @@ This document outlines the development plan and technical specifications for the
 
 ## Core Features & Design Principles
 
-*   **Interactive 2D Preview**: Users can flip through the pages of their photobook in a simple, intuitive 2D interface.
+*   **Interactive 2D Preview**: Users can flip through the pages of their photobook with a realistic page-turning animation.
 *   **Dynamic Photo Layout**: Photos are automatically arranged based on a predefined JSON structure, which can be extended with additional pages if more photos are uploaded.
 *   **High-Quality PDF Export**: The final photobook can be exported as a high-resolution, print-ready PDF.
 *   **Aesthetics**: The application will have a premium, modern design with a focus on user experience. It will be visually balanced, with clean spacing, polished styles, and intuitive navigation.
@@ -16,9 +16,8 @@ This document outlines the development plan and technical specifications for the
 
 *   **Framework**: Next.js (App Router)
 *   **Image Storage**: Supabase
-*   **Authentication**: Supabase Auth
-*   **PDF Generation**: Server-side generation for optimal quality.
-*   **Styling**: Tailwind CSS for utility-first styling.
+*   **Styling**: Tailwind CSS
+*   **Page-Flip Animation**: react-pageflip
 
 ---
 
@@ -33,34 +32,31 @@ The project will be developed in phases to ensure a structured and iterative wor
 3.  **UI Development - Orientation Screen**:
     *   Design and build the initial user interface at the root (`/`) of the application.
     *   Present two primary choices: "Landscape" and "Square".
-    *   The UI will be modern, responsive, and visually appealing, incorporating iconography and clean design.
-4.  **Routing**: Create a new route at `/upload` where users will be directed after selecting their photobook orientation.
+4.  **Routing**: Create a new route at `/upload`.
 
 ### **Phase 2: Photo Upload & Management (Completed)**
 
-1.  **UI Development - Upload Page**: Create the UI for the `/upload` page, including a file input area that accepts multiple images.
+1.  **UI Development - Upload Page**: Create a structured UI with distinct inputs for the front cover, back cover, and 8 page photos.
 2.  **Image Handling**:
-    *   Implemented Supabase Storage for secure image uploads and retrieval.
-    *   Implemented client-side validation for image resolution.
-    *   Implemented image upscaling with UpscalerJS.
-    *   Implemented logic to handle photo ordering and page creation.
+    *   Implemented Supabase Storage with systematic naming (`cover_front.jpg`, `cover_back.jpg`, `page_1.jpg`, etc.).
+    *   Implemented client-side validation for image resolution and an optional upscaler.
 
 ### **Phase 3: 2D Photobook Preview (In Progress)**
 
 1.  **UI Development - Preview Page**:
-    *   Create a two-page spread layout using standard HTML and CSS.
-    *   The layout will dynamically adjust to "Landscape" or "Square" orientations based on the URL query parameter.
+    *   Integrate the `react-pageflip` library to create an interactive book component.
+    *   The layout will dynamically adjust to "Landscape" or "Square" orientations.
 2.  **Image Display**:
-    *   Fetch the uploaded image URLs from Supabase.
-    *   Display the images on the corresponding pages of the 2D book view.
+    *   Fetch the uploaded image URLs from Supabase based on their precise filenames.
+    *   Display the images on the corresponding pages of the flipbook (front cover, pages 1-8, back cover).
 3.  **Navigation**:
-    *   Implement "Previous" and "Next" buttons to allow users to navigate through the pages of the photobook.
+    *   Users can click and drag to turn pages.
+    *   "Previous" and "Next" buttons will also be connected to the flipbook's API to turn pages programmatically.
 
 ### **Phase 4: PDF Generation & Checkout**
 
-1.  **Server-Side PDF Generation**: Create a server-side function to generate a high-resolution, print-ready PDF of the photobook.
-2.  **UI Development - Checkout/Download Page**: Create a final page where the user can confirm their photobook and download the generated PDF.
-3.  **Performance Testing**: Conduct performance tests to ensure the PDF generation process is smooth and efficient.
+1.  **PDF Generation**: Implement client-side PDF generation using `jsPDF`.
+2.  **UI Development - Download Button**: Create a button to trigger the PDF export.
 
 ---
 
