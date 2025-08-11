@@ -62,3 +62,20 @@ This file contains a summary of the conversation and the development process of 
 - **Bug Fix (Accessibility):** Missing `alt` properties on `Image` components were fixed on both the upload and preview pages.
 - **Bug Fix (`Node.insertBefore` error):** A DOM conflict between React and `react-pageflip` was resolved by adding a loading state and only rendering the flipbook component after all image data was fetched.
 - **Bug Fix (Animation Style):** An issue where the animation easing was not being applied was fixed by replacing the incorrect `transitionTimingFunction` prop with the correct `easing` prop.
+
+## 10. Advanced Auto-Layout Strategy
+- We moved beyond a simple randomizer to define a truly competitive auto-layout feature.
+- The strategy focuses on:
+    - **Thematic and Chronological Storytelling**: Grouping photos by time or color.
+    - **Dynamic and Varied Page Composition**: Using multi-photo templates and creating "hero" moments.
+    - **Intelligent User Interaction**: Offering style presets and allowing for editable auto-layouts.
+- **Next Step**: Implement **Time-Based Clustering** and a basic set of **Multi-Photo Templates**.
+
+### Competitive Advantages Summary
+
+| Feature                      | Current (Simple)             | Proposed (Advanced)                                                                                             |
+| ---------------------------- | ---------------------------- | --------------------------------------------------------------------------------------------------------------- |
+| **Arrangement Logic**        | Random Shuffle               | Chronological & Thematic Clustering                                                                             |
+| **Page Layout**              | One photo per page           | Dynamic, multi-photo templates with varied pacing and "hero" images.                                            |
+| **User Experience**          | "Re-Shuffle" button          | Style presets and a fully editable layout, empowering the user with a powerful starting point.                  |
+| **"Intelligence"**           | None                         | (Future) Subject recognition, color analysis, and visual weight balancing.                                      |

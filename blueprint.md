@@ -18,6 +18,8 @@ This document outlines the development plan and technical specifications for the
 *   **Image Storage**: Supabase
 *   **Styling**: Tailwind CSS
 *   **Page-Flip Animation**: react-pageflip
+*   **Color Analysis**: `fast-average-color`, `color`
+*   **Drag-and-Drop**: `@dnd-kit/core`, `@dnd-kit/sortable`
 
 ---
 
@@ -41,7 +43,7 @@ The project will be developed in phases to ensure a structured and iterative wor
     *   Implemented Supabase Storage with systematic naming (`cover_front.jpg`, `cover_back.jpg`, `page_1.jpg`, etc.).
     *   Implemented client-side validation for image resolution and an optional upscaler.
 
-### **Phase 3: 2D Photobook Preview (In Progress)**
+### **Phase 3: 2D Photobook Preview (Completed)**
 
 1.  **UI Development - Preview Page**:
     *   Integrate the `react-pageflip` library to create an interactive book component.
@@ -53,7 +55,19 @@ The project will be developed in phases to ensure a structured and iterative wor
     *   Users can click and drag to turn pages.
     *   "Previous" and "Next" buttons will also be connected to the flipbook's API to turn pages programmatically.
 
-### **Phase 4: PDF Generation & Checkout**
+### **Phase 4: Auto-Layout Editor (Completed)**
+
+1.  **New Route & Professional UI**: Established a dedicated route at `/auto-layout` with a professional-grade editor UI, including a control panel and a main preview area.
+2.  **Layout Algorithms**:
+    *   **Chronological**: Sorts images based on their upload timestamp (`created_at`).
+    *   **Color Harmony**: Sorts images based on the hue of their dominant color, creating a smooth visual flow.
+    *   **Shuffle**: Randomizes the order of the inner pages.
+    *   **Dynamic Collage**: Creates pages with multiple images in a collage format.
+    *   **Minimalist Showcase**: Displays a single, centered image on a complementary colored background.
+3.  **Editable Layouts**: Implemented a drag-and-drop interface for reordering pages.
+4.  **Advanced Debug Panel**: Implemented a real-time debug tool that displays contextual information for the currently viewed page, including filename, timestamp, and a swatch of the average color. This is a permanent feature for validation.
+
+### **Phase 5: PDF Generation & Checkout**
 
 1.  **PDF Generation**: Implement client-side PDF generation using `jsPDF`.
 2.  **UI Development - Download Button**: Create a button to trigger the PDF export.
